@@ -22,5 +22,60 @@
 	    <div id="thumbnails"></div>	
 	</div>
 	
+	<script>
+
+		// create a list (array) of strings and store it in a variable called image_root_names
+		const image_root_names = ["cat", "dog", "fish", "cow", "fox"];
+
+		// this is an arrow function called set_main_image
+		// the old way to write this would be function set_main_image(image_index) { ... }
+		// we need to pass in the corresponding root name via index from the array above
+		const set_main_image = (image_index) => {
+
+			// say we pass in set_main_image(2)
+			// then image_root_names[image_index];
+			// then image_root_names(2);
+			// then "fish"
+			// "images/" + "fish" + "Full.png";
+			// "images/fishFull.png";
+			document.querySelector("#main-image").src = "images/" + image_root_names[image_index] + "Full.png";
+
+		}
+
+
+		const set_thumbnails = () => {
+			
+			// .forEach has two parameters
+			image_root_names.forEach( (animal, array_index) => {
+
+				// 
+				const new_thumb = document.createElement("img");
+
+				// 
+				new_thumb.src = "images/" + animal + "Thumb.png";
+
+				// 
+				new_thumb.className = "clickable"
+				
+				// this adds a event listener to the image
+				new_thumb.addEventListener("click", () => {
+					// run the change main image function with the index to reference the array
+					set_main_image(array_index);
+				});
+
+				// 
+				document.querySelector("#thumbnails").append(new_thumb);
+
+			} )
+
+		};
+		
+		window.addEventListener("load", () => { 
+			set_main_image(0);
+			set_thumbnails(0);
+		});
+
+	</script>
+
 </body>
 </html>
