@@ -34,6 +34,25 @@
 	        let ending_num = parseInt(document.querySelector("#end").value);
 	        let output_html = "<div>While Loop</div>";
 
+			while(current_num < ending_num) {
+
+				if(current_num == 13) {
+					output_html += "<div>Unlucky Number</div>";
+					current_num++;
+
+					// no code will run after this statement on the 13th number
+					// we must increase current number above or we will have an infinite loop
+					continue;
+
+				}
+
+				output_html += "<div>Current = " + current_num + "</div>";
+				
+				// increases current number by one on each iteration
+				current_num++;
+
+			}
+
 	        document.querySelector("#result").innerHTML = output_html;
 
 	    }
@@ -42,17 +61,30 @@
             let ending_num = parseInt(document.querySelector("#end").value);
             var output_html = "<div>For Loop (ignores start value)</div>";
             
-            
+            for(let i = 0; i <= ending_num; i++) {
+				
+				output_html += "<div>Current =" + i + "</div>"
+				
+			}
 			
             document.querySelector("#result").innerHTML = output_html;    
 
 		}
+
+		const artists = ["MJ", "Illenium", "Deadmau5", "Mura Masa"];
+
+		console.log(artists[2]);
 
 	    function foreach_example() {
 	        let current_num = parseInt(document.querySelector("#start").value);
 	        let ending_num = parseInt(document.querySelector("#end").value);
 	        let output_html = "<div>Foreach Loop</div>";
 
+			artists.forEach( function(person)  {
+
+				output_html += "<div>One of my favourite artists is " + person + "! They SUCK!</div>";
+
+			});
 
 	        document.querySelector("#result").innerHTML = output_html;
 	    } // end of Foreach Example
